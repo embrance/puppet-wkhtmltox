@@ -5,8 +5,9 @@ class wkhtmltox::params {
   $majversion = '0.12'
   $version    = '0.12.2.1'
   $arch       = $::architecture
-  $operatingsystemrelease = "7" #default rhel 7
-
+  #default rhel 7  
+  $os_major_ver = '7'
+  
   #A bit hacky but the packaged versions of wkhtmltox are sparse
   case $::osfamily {
     'Debian': {
@@ -24,7 +25,6 @@ class wkhtmltox::params {
       ]
     }
     'RedHat': {
-      $os_major_ver  = $operatingsystemrelease
       $osver         = "centos${os_major_ver}"
       $packagetype   = 'rpm'
       $provider      = 'rpm'
